@@ -21,6 +21,9 @@ const apikey = '3ceb42c9b928f51fbb49487ef14e88b9';
 btn.addEventListener("click",()=>{
   const cityInput = city.value.trim();
   const response = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apikey}&units=metric`);
+  if(!response.ok){
+    throw new Error("Erro Occured");
+  }
   response.then(res=>{
     return res.json();
   }).then(data=>{
